@@ -1,0 +1,14 @@
+pandas
+matplotlib
+numpy 
+seaborn 
+plotly
+missingno
+scipy 
+sklearn
+tensorflow
+pre-commit
+autopep8
+flake8
+isort
+autoflake
