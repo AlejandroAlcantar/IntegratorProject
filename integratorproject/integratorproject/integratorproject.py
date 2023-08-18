@@ -1,4 +1,6 @@
+import joblib
 from Load.load_data import DataRetriever
+from sklearn.metrics import accuracy_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 from Train.train_data import WaterQualityDataPipeline
 
@@ -63,7 +65,7 @@ SELECTED_FEATURES = [
     'Trihalomethanes',
     'Turbidity']
 
-TRAINED_MODEL_DIR = './models/'
+TRAINED_MODEL_DIR = './integratorproject/integratorproject/Models/'
 PIPELINE_NAME = 'logistic_regression'
 PIPELINE_SAVE_FILE = f'{PIPELINE_NAME}_output.pkl'
 
@@ -79,14 +81,9 @@ if __name__ == "__main__":
     # Instantiate the TitanicDataPipeline class
     waterquality_data_pipeline = WaterQualityDataPipeline(
         seed_model=SEED_MODEL,
-        numerical_vars=NUMERICAL_VARS,
-        categorical_vars_with_na=CATEGORICAL_VARS_WITH_NA,
         numerical_vars_with_na=NUMERICAL_VARS_WITH_NA,
-        categorical_vars=CATEGORICAL_VARS,
         selected_features=SELECTED_FEATURES)
-
-    # # Read data
-    # df = pd.read_csv(DATASETS_DIR + RETRIEVED_DATA)
+    waterquality_data_pipeline.create_pipeline()
 
     # # Split data
     X_train, X_test, y_train, y_test = train_test_split(
@@ -96,18 +93,22 @@ if __name__ == "__main__":
         random_state=404
     )
 
+    X_transformed = waterquality_data_pipeline.PIPELINE.fit_transform(X_train)
     logistic_regression_model = waterquality_data_pipeline.fit_logistic_regression(
-        X_train, y_train)
+        X_transformed, y_train)
 
-    # X_test = waterquality_data_pipeline.PIPELINE.fit_transform(X_test)
-    # y_pred = logistic_regression_model.predict(X_test)
+    X_test_transformed = waterquality_data_pipeline.PIPELINE.fit_transform(
+        X_test)
+    class_pred = logistic_regression_model.predict(X_test_transformed)
+    proba_pred = logistic_regression_model.predict_proba(X_test_transformed)[
+        :, 1]
 
-    # class_pred = logistic_regression_model.predict(X_test)
-    # proba_pred = logistic_regression_model.predict_proba(X_test)[:,1]
-    # print(f'test roc-auc : {roc_auc_score(y_test, proba_pred)}')
-    # print(f'test accuracy: {accuracy_score(y_test, class_pred)}')
+    print(class_pred)
+
+    print(f'test roc-auc : {roc_auc_score(y_test, proba_pred)}')
+    print(f'test accuracy: {accuracy_score(y_test, class_pred)}')
 
     # # # Save the model using joblib
-    # save_path = TRAINED_MODEL_DIR + PIPELINE_SAVE_FILE
-    # joblib.dump(logistic_regression_model, save_path)
-    # print(f"Model saved in {save_path}")
+    save_path = TRAINED_MODEL_DIR + PIPELINE_SAVE_FILE
+    joblib.dump(logistic_regression_model, save_path)
+    print(f"Model saved in {save_path}")
