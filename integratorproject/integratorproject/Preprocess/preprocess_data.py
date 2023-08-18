@@ -63,8 +63,8 @@ class NumericalImputer(BaseEstimator, TransformerMixin):
         """
         self.median_dict = {}
         for var in self.variables:
-            self.median_dict[var] = X[var].mean()
-        print(self.median_dict)
+            self.median_dict[var] = X[var].median()
+
         return self
 
     def transform(self, X):
