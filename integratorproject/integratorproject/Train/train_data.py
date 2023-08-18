@@ -9,24 +9,18 @@ class WaterQualityDataPipeline:
     A class representing the WaterQuality data processing and modeling pipeline.
 
     Attributes:
-        NUMERICAL_VARS (list): A list of numerical variables in the dataset.
-        CATEGORICAL_VARS_WITH_NA (list): A list of categorical variables with missing values.
+        SEED_MODEL (int): A seed value for reproducibility.
         NUMERICAL_VARS_WITH_NA (list): A list of numerical variables with missing values.
         CATEGORICAL_VARS (list): A list of categorical variables in the dataset.
-        SEED_MODEL (int): A seed value for reproducibility.
 
     Methods:
-        create_pipeline(): Create and return the WaterQuality data processing pipeline.
+        create_pipeline(Pipeline): Create and return the WaterQuality data processing pipeline.
+        fit_logistic_regression (LogisticRegression model)
     """
 
-    def __init__(self, seed_model, numerical_vars, categorical_vars_with_na,
-                 numerical_vars_with_na, categorical_vars, selected_features):
+    def __init__(self, seed_model, numerical_vars_with_na, selected_features):
         self.SEED_MODEL = seed_model
-        self.NUMERICAL_VARS = numerical_vars
-        self.CATEGORICAL_VARS_WITH_NA = categorical_vars_with_na
         self.NUMERICAL_VARS_WITH_NA = numerical_vars_with_na
-        self.CATEGORICAL_VARS = categorical_vars
-        self.SEED_MODEL = seed_model
         self.SELECTED_FEATURES = selected_features
 
     def create_pipeline(self):
@@ -56,8 +50,6 @@ class WaterQualityDataPipeline:
         """
         logistic_regression = LogisticRegression(
             C=0.0005, class_weight='balanced', random_state=self.SEED_MODEL)
-        pipeline = self.create_pipeline()
-        pipeline.fit(X_train, y_train)
         logistic_regression.fit(X_train, y_train)
         return logistic_regression
 
