@@ -1,5 +1,8 @@
-
+# Mixin class for all transformers in scikit-learn.
 from sklearn.base import BaseEstimator, TransformerMixin
+
+# With this function we can transform the null values ​​into numeric values ​​by
+# putting the minimum values ​​in the nulls
 
 
 class NumericalImputer(BaseEstimator, TransformerMixin):

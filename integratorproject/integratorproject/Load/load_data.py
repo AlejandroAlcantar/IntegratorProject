@@ -1,5 +1,9 @@
 
 import pandas as pd
+from utilities.custom_loggin import CustomLogging
+
+logger = CustomLogging()
+logger = logger.CreateLogger(file_name='load_data.log')
 
 
 class DataRetriever:
@@ -42,7 +46,7 @@ class DataRetriever:
         # data.drop(self.DROP_COLS, axis=1, inplace=True)
 
         data = data.fillna(data.mean())
-
+        logger.info("data was loaded")
         return data
 
 # Usage Example:

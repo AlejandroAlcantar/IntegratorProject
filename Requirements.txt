@@ -13,3 +13,6 @@ flake8
 isort
 autoflake
 cookiecutter
+fastapi
+pydantic
+uvicorn

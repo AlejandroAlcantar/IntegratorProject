@@ -2,6 +2,10 @@ from Preprocess.preprocess_data import FeatureSelector, NumericalImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MinMaxScaler
+from utilities.custom_loggin import CustomLogging
+
+logger = CustomLogging()
+logger = logger.CreateLogger(file_name='load_data.log')
 
 
 class WaterQualityDataPipeline:
@@ -35,6 +39,7 @@ class WaterQualityDataPipeline:
                 ('median_imputation', NumericalImputer(
                     variables=self.NUMERICAL_VARS_WITH_NA)), ('feature_selector', FeatureSelector(
                         self.SELECTED_FEATURES)), ('scaling', MinMaxScaler()), ])
+        logger.debug("pipeline created successfully")
         return self.PIPELINE
 
     def fit_logistic_regression(self, X_train, y_train):
@@ -51,6 +56,7 @@ class WaterQualityDataPipeline:
         logistic_regression = LogisticRegression(
             C=0.0005, class_weight='balanced', random_state=self.SEED_MODEL)
         logistic_regression.fit(X_train, y_train)
+        logger.debug("regression fited created correctly")
         return logistic_regression
 
     def transform_test_data(self, X_test):
@@ -64,4 +70,5 @@ class WaterQualityDataPipeline:
         - transformed_data (pandas.DataFrame or numpy.ndarray): The preprocessed test data.
         """
         pipeline = self.create_pipeline()
+        logger.debug("data transformed excently")
         return pipeline.transform(X_test)
