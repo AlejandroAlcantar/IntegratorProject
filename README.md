@@ -36,17 +36,17 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
   
   * python3 -m venv venv
 
-* Windows cmd
+  * Windows cmd
   
-  * py -3.10 -m venv venv
+    * py -3.10 -m venv venv
 
 * Activate the virtual environment
 
   * source venv/bin/activate
     
-* Windows cmd
+  * Windows cmd
   
-  * venv\scripts\activate.bat
+    * venv\scripts\activate.bat
 
 * Install the other libraries. Run the following command to install the libraries/packages
   * pip install -r requirements.txt
@@ -55,7 +55,7 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
   
   * https://github.com/AlejandroAlcantar/IntegratorProject/blob/main/Requirements.txt
  
-##### Nota: Don´t forget to select the new environment at kernel when using VSCode
+##### Note: Don´t forget to select the new environment at kernel when using VSCode
 
 # Continuous use of GitHub
 
@@ -71,7 +71,7 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
 
 * Pre-commits were implemented on the project from Water_Quality.py file onward, since this was the first element pre-commits are able to evaluate
 
- * https://github.com/AlejandroAlcantar/IntegratorProject/blob/main/Water_Quality.py
+   * https://github.com/AlejandroAlcantar/IntegratorProject/blob/main/Water_Quality.py
    
 * This are the repos implemented for linting and formatting:
   
@@ -82,7 +82,7 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
 
 * Configuration file can be found at: https://github.com/AlejandroAlcantar/IntegratorProject/blob/main/.pre-commit-config.yaml
 
-#### Nota: 
+#### Note: 
   * Every one has its own hooks to represent specific checks on the code
   * The corresponding libraries are contained inside requirements.txt file. They may be installed but nothing will happen if .yaml file does not exist or is empty, or pre-commit has not been initialized on the project for the first time
 
@@ -91,7 +91,7 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
 * Open your terminal or command prompt, navigate to the root directory of your project
 * Pre-commit needs to be installed, at this time it already was by que requirements file
 
-#### Nota: 
+#### Note: 
 
   * If you are installing it for the firs time use:
     
@@ -128,18 +128,18 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
       * tests
       * train
 
-* In every one of the folders with a link attached there is code and files extracted from the Water_Quality.py file, and functionalities, with sections identified and linted and formatted with pre-commits hooks.
-  * All the code separated in modules and classes can be executed in the terminal
-### Nota:
+* All the code separated in modules and classes can be executed in the terminal
+    
+### Note:
 
   * Change the directory to "IntegratorProject" folder
   * If not active, activate virtual environment
 
     * source venv/bin/activate
       
-  * Windows cmd:
-
-    * venv\scripts\activate.bat
+    * Windows cmd:
+  
+      * venv\scripts\activate.bat
       
   * Run the following:
     
