@@ -147,5 +147,6 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
    
   # REST API
 
-  * The implementation of REST API was through the application of fastapi, pydantic and uvicorn libraries and the corresponding code can be found in the _____
-  * folder of this project (____).
+  * The implementation of REST API was through the application of fastapi, pydantic and uvicorn libraries and the corresponding code can be found in the https://github.com/AlejandroAlcantar/IntegratorProject/tree/main/api
+    
+  * folder of this project (https://github.com/AlejandroAlcantar/IntegratorProject)
