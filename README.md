@@ -150,3 +150,22 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
   * The implementation of REST API was through the application of fastapi, pydantic and uvicorn libraries and the corresponding code can be found in the https://github.com/AlejandroAlcantar/IntegratorProject/tree/main/api
     
   * folder of this project (https://github.com/AlejandroAlcantar/IntegratorProject)
+    
+    * All libraries are included in requirements file, and are already installed by this point
+   
+  * The endpoints generated to run the project as an API are
+    
+    * healthcheck
+    * train_new_model
+    * predictor
+   
+  * Run the following command to start House-pricing API locally
+
+    * uvicorn api.main:app --reload
+      
+  * You can check the endpoints as follows:
+
+    * Access http://127.0.0.1:8000/, you will see a message like this "WaterPotability Regressor is ready to go!"
+      
+    * Access http://127.0.0.1:8000/docs, the browser will display something like this:
+   
