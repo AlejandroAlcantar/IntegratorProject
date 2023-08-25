@@ -166,6 +166,93 @@ It was extracted from two notebooks developed by other users on the Kaggle platf
   * You can check the endpoints as follows:
 
     * Access http://127.0.0.1:8000/, you will see a message like this "WaterPotability Regressor is ready to go!"
-      
+   
+    * ![image](https://github.com/AlejandroAlcantar/IntegratorProject/assets/140922747/2169ba86-7701-4829-aa4d-2545e5d88ae9)
+
     * Access http://127.0.0.1:8000/docs, the browser will display something like this:
    
+  * Try running the following predictions with the endpoint by writing the following values:
+    
+    * Prediction 1
+      * Request body
+        * {
+  "ph": 0,
+  "Hardness": 0,
+  "Solids": 0,
+  "Chloramines": 0,
+  "Sulfate": 0,
+  "Conductivity": 0,
+  "Organic_carbon": 0,
+  "Trihalomethanes": 0,
+  "Turbidity": 0
+}
+
+        * Response body The output will be:
+
+        * "Resultado predicción: [0]"
+
+    * Prediction 2
+      * Request body
+        * {
+  "ph": 1,
+  "Hardness": 0,
+  "Solids": 1,
+  "Chloramines": 0,
+  "Sulfate": 1,
+  "Conductivity": 1,
+  "Organic_carbon": 1,
+  "Trihalomethanes": 0,
+  "Turbidity": 1
+}
+
+        * Response body The output will be:
+
+        * "Resultado predicción: [1]"
+
+## Complete deployment of all containers with Docker Compose and usage
+
+### Create the network
+
+  * First, create the network AIService by running this command:
+    
+      * docker network create AIservice
+   
+### Run Docker Compose
+
+  * Ensure you are in the directory where the docker-compose.yml file is located
+  * Run the next command to start the App and Frontend APIs
+
+    * docker-compose -f docker-compose.yml up --build
+   
+  * You will see something like this:
+    *  ✔ Container integratorproject-server-1  Created                                                                                   0.0s
+ ✔ Container integratorproject-api-1     Recreated                                                                                 0.1s
+Attaching to integratorproject-api-1, integratorproject-server-1
+integratorproject-server-1  | INFO:     Will watch for changes in these directories: ['/']
+integratorproject-server-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+integratorproject-server-1  | INFO:     Started reloader process [1] using StatReload
+integratorproject-api-1     | INFO:     Will watch for changes in these directories: ['/']
+integratorproject-api-1     | INFO:     Uvicorn running on http://0.0.0.0:3000 (Press CTRL+C to quit)
+integratorproject-api-1     | INFO:     Started reloader process [1] using StatReload
+integratorproject-server-1  | INFO:     Started server process [8]
+integratorproject-server-1  | INFO:     Waiting for application startup.
+integratorproject-server-1  | INFO:     Application startup complete.
+integratorproject-api-1     | INFO:     Started server process [8]
+integratorproject-api-1     | INFO:     Waiting for application startup.
+integratorproject-api-1     | INFO:     Application startup complete.
+
+### Checking endpoints in Frontend
+
+* 1 Access http://localhost:3000/ , and you will see a message like this "Water-Potability Model Front-end is ready to go!"
+* ![image](https://github.com/AlejandroAlcantar/IntegratorProject/assets/140922747/051a5a7a-ca8c-4c39-baef-4f0cfe17436e)
+* 2 Access http://localhost:3000/docs#/
+* ![image](https://github.com/AlejandroAlcantar/IntegratorProject/assets/140922747/b228ea66-e845-4d0f-a791-f31cd8bf56c2)
+
+### Contact information
+
+  #### Alejandro Alcantar alcantar.medel@gmail.com
+
+### Gratitude
+
+  * Thank you very much teachers Carlos Mejia, I struggled, but I learned and had fun.
+
